@@ -50,13 +50,15 @@ values."
      spell-checking
      syntax-checking
      version-control
-     firstlayer 
+     zilongshanren
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+;;youdao-dictionary
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -222,14 +224,14 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -302,11 +304,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 ‘dotspacemacs/user-config' first."
+
 ;; set emacs-china iso
-(setq configuration-layer--elpa-archives
-    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-      ("org-cn"   . "http://elpa.emacs-china.org/org/")
-      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+;;(setq configuration-layer--elpa-archives
+;;    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;;      ("org-cn"   . "http://elpa.emacs-china.org/org/")
+;;    ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 )
@@ -319,12 +322,29 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  (abbrev-mode t)
+  (define-abbrev-table 'global-abbrev-table '(
+                                              ;; signature
+                                              ("n4d" "nicolas4d")
+                                              ;; emacs regex
+                                              ))
+
+  ;; alter set-mark-command
+  (if (string= system-type "window-nt")
+      ((global-unset-key (kbd "C-SPC"))
+       (global-set-key (kbd "M-SPC") 'set-mark-command)
+       ))
+
+  ;; modeline
+  (setq ns-use-srgb-colorspace nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
