@@ -31,33 +31,38 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;;helm
-     ivy
+     nicolas4d
      auto-completion
-     better-defaults
+     (better-defaults :variables better-defaults-move-to-end-of-code-first t)
      emacs-lisp
      git
+     ;;helm
+     html
+     javascript
+     python
+     c-c++
+     ivy
      markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     ranger
      spell-checking
      syntax-checking
      version-control
-     zilongshanren
+     plantuml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-;;youdao-dictionary
+                                      lispy
+                                      epc
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -105,7 +110,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -305,14 +310,16 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 ‘dotspacemacs/user-config' first."
 
-;; set emacs-china iso
-;;(setq configuration-layer--elpa-archives
-;;    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;;      ("org-cn"   . "http://elpa.emacs-china.org/org/")
-;;    ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-(setq tramp-ssh-controlmaster-options
-      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-)
+  ;; set emacs-china iso
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+          ("org-cn"   . "http://elpa.emacs-china.org/org/")
+          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+
+  ;; fix why is spacemacs hanging on startup.
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  )
 
 (defun dotspacemacs/user-config ()
   
@@ -323,21 +330,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (abbrev-mode t)
-  (define-abbrev-table 'global-abbrev-table '(
-                                              ;; signature
-                                              ("n4d" "nicolas4d")
-                                              ;; emacs regex
-                                              ))
-
-  ;; alter set-mark-command
-  (if (string= system-type "window-nt")
-      ((global-unset-key (kbd "C-SPC"))
-       (global-set-key (kbd "M-SPC") 'set-mark-command)
-       ))
-
-  ;; modeline
-  (setq ns-use-srgb-colorspace nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
