@@ -41,7 +41,7 @@ values."
      auto-completion
      (better-defaults :variables better-defaults-move-to-end-of-code-first t)
      emacs-lisp
-     git
+  ;;   git
      ;;helm
      html
      javascript
@@ -318,7 +318,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; fix why is spacemacs hanging on startup.
   (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   )
 
 (defun dotspacemacs/user-config ()
