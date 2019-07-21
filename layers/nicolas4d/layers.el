@@ -4,4 +4,9 @@
                                       nicolas4d-plantuml
                                       nicolas4d-abbrev
                                       nicolas4d-expand-region
+                                      nicolas4d-org
+                                      nicolas4d-iedit
+                                      nicolas4d-proxy
+                                      nicolas4d-occur
+                                      nicolas4d-dired
                                       ))

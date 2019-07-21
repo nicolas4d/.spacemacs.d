@@ -1,8 +1,8 @@
-;;; packages.el --- nicolas4d-delete-hungry layer packages file for Spacemacs.
+;;; packages.el --- nicolas4d-iedit layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
-;; Author: D <d@d-Lenovo-IdeaPad-Y470>
+;; Author: d <d@d-c>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
@@ -18,20 +18,20 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `nicolas4d-delete-hungry-packages'. Then, for each package PACKAGE:
+;; added to `nicolas4d-iedit-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `nicolas4d-delete-hungry/init-PACKAGE' to load and initialize the package.
+;;   function `nicolas4d-iedit/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `nicolas4d-delete-hungry/pre-init-PACKAGE' and/or
-;;   `nicolas4d-delete-hungry/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `nicolas4d-iedit/pre-init-PACKAGE' and/or
+;;   `nicolas4d-iedit/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst nicolas4d-hungry-delete-packages
+(defconst nicolas4d-iedit-packages
   '()
-  "The list of Lisp packages required by the nicolas4d-delete-hungry layer.
+  "The list of Lisp packages required by the nicolas4d-iedit layer.
 
 Each entry is either:
 
@@ -57,5 +57,6 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
 
 ;;; packages.el ends here

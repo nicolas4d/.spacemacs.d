@@ -1,8 +1,8 @@
-;;; packages.el --- zilongshanren layer packages file for Spacemacs.
+;;; packages.el --- nicolas4d-proxy layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
-;; Author: D <d@d-Lenovo-IdeaPad-Y470>
+;; Author: d <d@d-c>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
@@ -18,25 +18,20 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `zilongshanren-packages'. Then, for each package PACKAGE:
+;; added to `nicolas4d-proxy-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `zilongshanren/init-PACKAGE' to load and initialize the package.
+;;   function `nicolas4d-proxy/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `zilongshanren/pre-init-PACKAGE' and/or
-;;   `zilongshanren/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `nicolas4d-proxy/pre-init-PACKAGE' and/or
+;;   `nicolas4d-proxy/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst zilongshanren-packages
-  '(youdao-dictionary
-    company
-
-    (gulpjs :location (recipe :fetcher github :repo "zilongshanren/emacs-gulpjs"))
-    )
-
-  "The list of Lisp packages required by the zilongshanren layer.
+(defconst nicolas4d-proxy-packages
+  '()
+  "The list of Lisp packages required by the nicolas4d-proxy layer.
 
 Each entry is either:
 
@@ -63,29 +58,5 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-;;(defun zilongshanren/init-youdao-dictionary ()
-;;  (use-package youdao-dictionary
-    ;;:defer t
-    ;;:init
-        ;;;(spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
-    ;;)
-  ;;)
-
-;; 定制 company-mode
-(defun zilongshanren/post-init-company ()
-  (setq company-minimum-prefix-length 1)
-  )
-
-;; 初始化 occur mode
-(defun zilongshanren/init-occur-mode ()
-  (evilified-state-evilify-map occur-mode-map
-    :mode occur-mode)
-  )
-
-;; gulpjs 
-(defun zilongshanren/init-gulpjs ()
-  (use-package gulpjs
-    :init)
-  )
 
 ;;; packages.el ends here

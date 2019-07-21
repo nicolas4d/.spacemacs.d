@@ -31,7 +31,6 @@
 
 (defconst nicolas4d-abbrev-packages
   '(
-    abbrev
     )
   "The list of Lisp packages required by the nicolas4d-abbrev layer.
 
@@ -59,9 +58,5 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
-(defun nicolas4d-abbrev/init-abbrev ()
-  (use-package abbrev
-    :init)
-  )
 
 ;;; packages.el ends here

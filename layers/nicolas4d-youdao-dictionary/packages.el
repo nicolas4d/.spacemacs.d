@@ -59,10 +59,35 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
 (defun nicolas4d-youdao-dictionary/init-youdao-dictionary ()
-  (use-package youdao-dictionary
-    :init
-    )
+  (progn
+    (defvar use-package--warning1221
+      (function
+       (lambda
+         (keyword err)
+         (let
+             ((msg
+               (format "%s/%s: %s" 'youdao-dictionary keyword
+                       (error-message-string err))))
+           (display-warning 'use-package msg :error)))))
+    (condition-case err
+        (progn
+          (condition-case err
+              (if
+                  (run-hook-with-args-until-failure 'use-package--youdao-dictionary--pre-init-hook)
+                  (progn
+                    (run-hooks 'use-package--youdao-dictionary--post-init-hook)))
+            ((debug error)
+             (funcall use-package--warning1221 :init err)))
+          (if
+              (not
+               (require 'youdao-dictionary nil t))
+              (display-warning 'use-package
+                               (format "Cannot load %s" 'youdao-dictionary)
+                               :error)))
+      ((debug error)
+       (funcall use-package--warning1221 :catch err))))
 )
 
 
