@@ -9,4 +9,5 @@
                                       nicolas4d-proxy
                                       nicolas4d-occur
                                       nicolas4d-dired
+                                      nicolas4d-program
                                       ))
