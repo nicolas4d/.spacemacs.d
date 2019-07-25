@@ -5,9 +5,9 @@
   )
 
 (defun nicolas4d/setup-tags-project-environment ()
-  (interactive)
   (if (nicolas4d/tags-project-root)
       (setq tags-table-list (list (nicolas4d/tags-project-root)))
+    (setq tags-table-list nil)
     )
   )
 
@@ -27,9 +27,8 @@
 (defun nicolas4d/update-tags ()
   (interactive)
   "check the tags in tags-table-list and re-create it"
-  (if (nicolas4d/tags-project-root) ;; prevent tags-project to create tags not in tags-project file
-      (dolist (tag tags-table-list)
-        (nicolas4d/create-tags-if-needed (file-name-directory tag) t)))
-    )
+  (nicolas4d/setup-tags-project-environment)
+  (dolist (tag tags-table-list)
+    (nicolas4d/create-tags-if-needed (file-name-directory tag) t)))
 
 (advice-add 'save-buffer :after #'nicolas4d/update-tags)
