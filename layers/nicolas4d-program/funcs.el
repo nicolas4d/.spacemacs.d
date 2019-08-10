@@ -1,6 +1,9 @@
+(defvar nicolas4d/tag-company-config ".TAGS_CONF"
+  "tag-company-configuration files")
+
 (defun nicolas4d/tags-project-root()
   (let ((directory default-directory))
-    (locate-dominating-file directory ".TAGS_conf")
+    (locate-dominating-file directory nicolas4d/tag-company-config)
     )
   )
 
