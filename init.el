@@ -40,7 +40,6 @@ values."
      auto-completion
      (better-defaults :variables better-defaults-move-to-end-of-code-first t)
      emacs-lisp
-     git
      ;;helm
      html
      python
