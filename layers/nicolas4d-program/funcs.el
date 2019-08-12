@@ -32,6 +32,6 @@
   "check the tags in tags-table-list and re-create it"
   (nicolas4d/setup-tags-project-environment)
   (dolist (tag tags-table-list)
-    (nicolas4d/create-tags-if-needed (file-name-directory tag) t)))
+    (make-thread (nicolas4d/create-tags-if-needed (file-name-directory tag) t))))
 
 (advice-add 'save-buffer :after #'nicolas4d/update-tags)
