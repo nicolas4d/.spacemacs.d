@@ -1,37 +1,71 @@
-(defvar nicolas4d/tag-company-config ".TAGS_CONF"
-  "tag-company-configuration files")
+;;tags-company
+(defvar tags-company/conf ".TAGS_CONF"
+  "tags-company configuration default file name")
 
-(defun nicolas4d/tags-project-root()
+(defvar tags-company/start-create-tags-msg "Creating TAGS in %s ..."
+  "message when start create tags or update tags")
+
+(defvar tags-company/create-tags-command-and-option "ctags -f %s -e -R %s"
+  "create tags command and option string")
+
+(defvar tags-company/tags-file-name "TAGS"
+  "default tags file name.")
+
+(defvar tags-company/set-environment-msg "set tags-company environment succeed")
+(defvar tags-company/unset-environment-succeed-msg "unset tags-company environment succeed")
+(defvar tags-company/unset-environment-not-found-msg "not found tags-company environment")
+
+(defun tags-company/find-environment()
+  "locate tags company root directory.
+find directory that contain tags-company-conf."
   (let ((directory default-directory))
-    (locate-dominating-file directory nicolas4d/tag-company-config)
-    )
-  )
+    (locate-dominating-file directory tags-company/conf)))
 
-(defun nicolas4d/setup-tags-project-environment ()
-  (if (nicolas4d/tags-project-root)
-      (setq tags-table-list (list (nicolas4d/tags-project-root)))
-    (setq tags-table-list nil)
-    )
-  )
+(defun tags-company/set-up-company ()
+  "make use of custom tags file for company-mode"
+  (if (tags-company/find-environment)
+      (setq tags-table-list (list (tags-company/find-environment)))
+    (setq tags-table-list nil)))
 
-(defun nicolas4d/create-tags-if-needed (SRC-DIR &optional FORCE)
-  "return the full path of tags file"
+(defun tags-company/create-tags (SRC-DIR &optional FORCE)
+  "Cteate tags.
+command use create-tags-command-and-option."
   (let ((dir (file-name-as-directory (file-truename SRC-DIR)))
         file)
-    (setq file (concat dir "TAGS"))
+    (setq file (concat dir tags-company/tags-file-name))
     (when (spacemacs/system-is-mswindows)
       (setq dir (substring dir 0 -1)))
-    (when (or FORCE (not (file-exists-p file)))
-      (message "Creating TAGS in %s ..." dir)
+    (when (or
+           FORCE
+           (not (file-exists-p file)))
+      (message tags-company/start-create-tags-msg dir)
       (shell-command
-       (format "ctags -f %s -e -R %s" file dir)))
+       (format tags-company/create-tags-command-and-option file dir)))
     file))
 
-(defun nicolas4d/update-tags ()
+(defun tags-company/update-tags ()
+  "check the tags in tags-table-list and re-create it."
   (interactive)
-  "check the tags in tags-table-list and re-create it"
-  (nicolas4d/setup-tags-project-environment)
-  (dolist (tag tags-table-list)
-    (make-thread (nicolas4d/create-tags-if-needed (file-name-directory tag) t))))
+  (tags-company/set-up-company)
+  (dolist (tags-file tags-table-list)
+    (make-thread
+     (tags-company/create-tags (file-name-directory tags-file) t))))
 
-(advice-add 'save-buffer :after #'nicolas4d/update-tags)
+(defun tags-company/set-environment()
+  "create tags-company/conf configuration file."
+  (interactive)
+  (dired-create-empty-file tags-company/conf)
+  (message tags-company/set-environment-msg))
+
+(defun tags-company/unset-environment()
+  "remove tags-company/conf configuration file"
+  (interactive)
+  (if (file-exists-p tags-company/conf)
+      (progn
+        (dired-delete-file tags-company/conf)
+        (message tags-company/unset-environment-succeed-msg))
+    (message tags-company/unset-environment-not-found-msg)))
+
+(advice-add 'save-buffer :after #'tags-company/update-tags)
+
+;; the others
