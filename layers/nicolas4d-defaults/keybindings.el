@@ -4,8 +4,15 @@
 ;;iedit
 (global-set-key (kbd "M-s e") 'iedit-mode)
 
-;;occur
-(global-set-key (kbd "M-s o") 'occur-dwim)
-
 ;;youdao-dictionary
 (spacemacs/set-leader-keys "dy" 'youdao-dictionary-search-at-point+)
+
+;; alter set-mark-command
+(if (string= system-type "window-nt")
+    ((global-unset-key (kbd "C-SPC"))
+     (global-set-key (kbd "M-SPC") 'set-mark-command)
+     ))
+
+;;; Rebind 'C-x C-b' for 'buffer-menu'
+(global-set-key "\C-x\C-b" 'buffer-menu)
+

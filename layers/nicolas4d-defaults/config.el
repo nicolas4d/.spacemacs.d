@@ -1,8 +1,3 @@
-;;abbrev
-(define-abbrev-table 'global-abbrev-table '(
-                                            ("n4d" "nicolas4d")
-                                            ))
-
 ;;dired
 (put 'dired-find-alternate-file 'disabled nil)
 (with-eval-after-load 'dired

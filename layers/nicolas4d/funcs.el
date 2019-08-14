@@ -7,7 +7,7 @@
   (interactive)
   (persp-save-state-to-file (concat persp-save-dir "d-layout")))
 
-;; Configure network proxy
+;;; Configure network proxy
 ;; my-proxy is my machine's proxy
 (setq my-proxy `http://127.0.0.1:1080)
 
@@ -51,3 +51,17 @@
   "Return the project root for current buffer."
   (let ((directory default-directory))
     (locate-dominating-file directory ".git")))
+
+;; dwin = do what i mean.
+(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning)
+             (region-end))
+          (let ((sym (thing-at-point 'symbol)))
+            (when (stringp sym)
+              (regexp-quote sym))))
+        regexp-history)
+  (call-interactively 'occur))
