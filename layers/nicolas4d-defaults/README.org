@@ -1,7 +1,7 @@
-#+TITLE: nicolas4d-delete-hungry layer
+#+TITLE: nicolas4d-defaults layer
 
 # The maximum height of the logo should be 200 pixels.
-[[img/nicolas4d-delete-hungry.png]]
+[[img/nicolas4d-defaults.png]]
 
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
@@ -10,10 +10,12 @@
 - [[#key-bindings][Key bindings]]
 
 * Description
-configuration delete hungry
+This layer does wonderful things:
+  - thing01
+
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
-add =nicolas4d-delete-hungry= to the existing =dotspacemacs-configuration-layers= list in this
+add =nicolas4d-defaults= to the existing =dotspacemacs-configuration-layers= list in this
 file.
 
 * Key bindings

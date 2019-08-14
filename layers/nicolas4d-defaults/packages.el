@@ -1,8 +1,8 @@
-;;; packages.el --- nicolas4d-youdao-dictionary layer packages file for Spacemacs.
+;;; packages.el --- nicolas4d-defaults layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
-;; Author: D <d@d-Lenovo-IdeaPad-Y470>
+;; Author: d <d@d-c>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
@@ -18,22 +18,23 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `nicolas4d-youdao-dictionary-packages'. Then, for each package PACKAGE:
+;; added to `nicolas4d-defaults-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `nicolas4d-youdao-dictionary/init-PACKAGE' to load and initialize the package.
+;;   function `nicolas4d-defaults/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `nicolas4d-youdao-dictionary/pre-init-PACKAGE' and/or
-;;   `nicolas4d-youdao-dictionary/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `nicolas4d-defaults/pre-init-PACKAGE' and/or
+;;   `nicolas4d-defaults/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst nicolas4d-youdao-dictionary-packages
+(defconst nicolas4d-defaults-packages
   '(
+    dired :location built-in
     youdao-dictionary
     )
-  "The list of Lisp packages required by the nicolas4d-youdao-dictionary layer.
+  "The list of Lisp packages required by the nicolas4d-defaults layer.
 
 Each entry is either:
 
@@ -60,7 +61,7 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun nicolas4d-youdao-dictionary/init-youdao-dictionary ()
+(defun nicolas4d-defaults/init-youdao-dictionary ()
   (progn
     (defvar use-package--warning1221
       (function
@@ -88,7 +89,6 @@ Each entry is either:
                                :error)))
       ((debug error)
        (funcall use-package--warning1221 :catch err))))
-)
-
+  )
 
 ;;; packages.el ends here
