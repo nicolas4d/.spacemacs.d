@@ -33,6 +33,7 @@
   '(
     dired :location built-in
     youdao-dictionary
+    company
     )
   "The list of Lisp packages required by the nicolas4d-defaults layer.
 
@@ -91,4 +92,6 @@ Each entry is either:
        (funcall use-package--warning1221 :catch err))))
   )
 
+(defun nicolas4d-defaults/init-company()
+  (setq company-minimum-prefix-length 1))
 ;;; packages.el ends here

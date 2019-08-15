@@ -11,6 +11,8 @@
   "ctags -f %s -e -R %s"
   "create tags command and option string")
 
+(defvar tags-company/set-environment-already-msg
+  "already been set tags-company environment.")
 (defvar tags-company/set-environment-msg
   "set tags-company environment succeed")
 (defvar tags-company/unset-environment-succeed-msg
@@ -21,11 +23,36 @@
 (defun tags-company/find-environment()
   "locate tags company root directory.
 find directory that contain tags-company-conf."
+  (interactive)
   (let ((directory default-directory)
-        (conf-directory))
+        conf-directory)
     (setq conf-directory
           (locate-dominating-file directory tags-company/conf))
-    conf-directory))
+    (message conf-directory)))
+
+(defun tags-company/read-conf(file)
+  "read configuration file's contents.
+return the file contents as list."
+  (save-excursion
+    (let ((string-list ())
+          (current-buffer (current-buffer)))
+      ;;init buffer
+      (set-buffer (find-file-noselect file))
+      (beginning-of-buffer)
+      ;; cons list by newline
+      (while (not (eobp))
+        (set-mark (point))
+        (deactivate-mark)
+        (search-forward-regexp "\\'\\|\n" (point-max))
+        (copy-region-as-kill (mark) (point))
+        ;;(setq buffer-string (buffer-string))
+        ;;(setq string-list (cons (yank-pop) string-list))
+        (setq string-list (cons (car kill-ring) string-list))
+        )
+      ;;restore buffer
+      (unless (eq current-buffer (current-buffer))
+        (kill-buffer (current-buffer)))
+      string-list)))
 
 (defun tags-company/read-conf(file)
   "read configuration file's contents.
@@ -82,8 +109,10 @@ command use create-tags-command-and-option."
 (defun tags-company/set-environment()
   "create tags-company/conf configuration file."
   (interactive)
-  (dired-create-empty-file tags-company/conf)
-  (message tags-company/set-environment-msg))
+  (if (file-exists-p tags-company/conf)
+      (message tags-company/set-environment-already-msg)
+    (dired-create-empty-file tags-company/conf)
+    (message tags-company/set-environment-msg)))
 
 (defun tags-company/unset-environment()
   "remove tags-company/conf configuration file"
