@@ -22,3 +22,8 @@
 
 ;;delete-selection
 (delete-selection-mode t)
+
+;;company
+(with-eval-after-load 'company
+  (setq company-minimum-prefix-length 1))
+
