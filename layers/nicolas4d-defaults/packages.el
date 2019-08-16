@@ -32,6 +32,12 @@
 (defconst nicolas4d-defaults-packages
   '(
     youdao-dictionary
+    company
+    dired
+    hungry-delete
+    plantuml
+    web-mode
+    yasnippet
     )
   "The list of Lisp packages required by the nicolas4d-defaults layer.
 
@@ -89,4 +95,27 @@ Each entry is either:
       ((debug error)
        (funcall use-package--warning1221 :catch err))))
   )
+
+(defun nicolas4d-defaults/post-init-company()
+  (setq company-minimum-prefix-length 1))
+
+(defun nicolas4d-defaults/post-init-dired()
+  (put 'dired-find-alternate-file 'disabled nil)
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+
+(defun nicolas4d-defaults/post-init-hungry-delete()
+  (global-hungry-delete-mode))
+
+(defun nicolas4d-defaults/post-init-plantuml()
+  (setq org-plantuml-jar-path
+        (expand-file-name "/home/d/.spacemacs.d/plantuml.jar"))
+  (setq plantuml-jar-path
+        (expand-file-name "/home/d/.spacemacs.d/plantuml.jar")))
+
+(defun nicolas4d-defaults/post-init-web-mode()
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode)))
+
+(defun nicolas4d-defaults/post-init-yasnippet()
+  (define-key yas-minor-mode-map (kbd "TAB") #'yas-expand))
+
 ;;; packages.el ends here
