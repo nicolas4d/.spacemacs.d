@@ -65,8 +65,8 @@ values."
    dotspacemacs-additional-packages '(
                                       lispy
                                       epc
-                                      yasnippet-snippets
                                       groovy-mode
+                                      yasnippet-snippets
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
