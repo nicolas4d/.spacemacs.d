@@ -116,6 +116,11 @@ Each entry is either:
   (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode)))
 
 (defun nicolas4d-defaults/post-init-yasnippet()
-  (define-key yas-minor-mode-map (kbd "TAB") #'yas-expand))
+  (with-eval-after-load 'yasnippet
+    (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+    ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+    ;;(define-key yas-minor-mode-map (kbd "C-c C-n") #'yas-new-snippet)
+    ;;(define-key yas-minor-mode-map (kbd "C-c C-v") #'yas-visit-snippet-file)
+    ))
 
 ;;; packages.el ends here
