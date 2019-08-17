@@ -123,6 +123,14 @@ command use create-tags-command-and-option."
         (message tags-company/unset-environment-succeed-msg))
     (message tags-company/unset-environment-not-found-msg)))
 
-(advice-add 'save-buffer :after #'tags-company/update-tags)
+;; (defvar tags-company/update-tags-when-save-buffer-state nil
+;;   "update tsgs when save buffer.")
+
+(defun tags-company/toggle-update-tags-when-save-buffer()
+  "toggle update tags when save buffer."
+  (interactive)
+  (if (advice-member-p 'tags-company/update-tags #'save-buffer)
+      (advice-remove 'save-buffer #'tags-company/update-tags)
+    (advice-add 'save-buffer :after #'tags-company/update-tags)))
 
 ;; the others

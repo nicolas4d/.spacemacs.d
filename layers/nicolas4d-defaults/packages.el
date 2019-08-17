@@ -117,7 +117,7 @@ Each entry is either:
 
 (defun nicolas4d-defaults/post-init-yasnippet()
   (with-eval-after-load 'yasnippet
-    (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+    (define-key yas-minor-mode-map (kbd "TAB") yas-maybe-expand)
     ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
     ;;(define-key yas-minor-mode-map (kbd "C-c C-n") #'yas-new-snippet)
     ;;(define-key yas-minor-mode-map (kbd "C-c C-v") #'yas-visit-snippet-file)
