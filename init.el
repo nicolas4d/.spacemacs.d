@@ -45,6 +45,7 @@ values."
      python
      c-c++
      ivy
+     ;;helm
      markdown
      org
      ranger

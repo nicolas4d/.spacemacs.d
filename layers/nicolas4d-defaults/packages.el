@@ -100,8 +100,11 @@ Each entry is either:
   (setq company-minimum-prefix-length 1))
 
 (defun nicolas4d-defaults/post-init-dired()
+  ;; reuse one buffer
   (put 'dired-find-alternate-file 'disabled nil)
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  (setq dired-recursive-deletes 'always)
+  )
 
 (defun nicolas4d-defaults/post-init-hungry-delete()
   (global-hungry-delete-mode))
@@ -113,7 +116,8 @@ Each entry is either:
         (expand-file-name "/home/d/.spacemacs.d/plantuml.jar")))
 
 (defun nicolas4d-defaults/post-init-web-mode()
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode)))
+  ;;(add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+  )
 
 (defun nicolas4d-defaults/post-init-yasnippet()
   (with-eval-after-load 'yasnippet

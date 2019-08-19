@@ -35,6 +35,7 @@
     counsel-etags
     ;;helm-etags-plus
     ;;ac-etags
+    (tags-company :location (recipe :fetcher github :repo "nicolas4d/tags-company"))
     )
   "The list of Lisp packages required by the nicolas4d-program layer.
 
@@ -90,5 +91,10 @@ Each entry is either:
 (defun nicolas4d-program/init-ac-etags()
   (use-package ac-etags
     :init))
+
+(defun nicolas4d-program/init-tags-company()
+  (use-package tags-company
+    :init
+    ))
 
 ;;; packages.el ends here
