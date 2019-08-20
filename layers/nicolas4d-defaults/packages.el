@@ -121,7 +121,8 @@ Each entry is either:
   )
 
 (defun nicolas4d-defaults/post-init-yasnippet()
-  (with-eval-after-load 'yasnippet
+  (use-package yasnippet
+    :config
     (define-key yas-minor-mode-map (kbd "TAB") yas-maybe-expand)
     ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
     ;;(define-key yas-minor-mode-map (kbd "C-c C-n") #'yas-new-snippet)
@@ -131,5 +132,8 @@ Each entry is either:
 (defun nicolas4d-defaults/init-helm-ag()
   (use-package helm-ag
     :init
+
+    ;;; for remove warning when emacs statup commented below in .emacs.d/elpa/helm-core.../helm.el
+    ;;(defvaralias 'helm-split-window-in-side-p 'helm-split-window-inside-p)
     ))
 ;;; packages.el ends here
