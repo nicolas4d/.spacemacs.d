@@ -38,6 +38,7 @@
     plantuml
     web-mode
     yasnippet
+    helm-ag
     )
   "The list of Lisp packages required by the nicolas4d-defaults layer.
 
@@ -127,4 +128,8 @@ Each entry is either:
     ;;(define-key yas-minor-mode-map (kbd "C-c C-v") #'yas-visit-snippet-file)
     ))
 
+(defun nicolas4d-defaults/init-helm-ag()
+  (use-package helm-ag
+    :init
+    ))
 ;;; packages.el ends here

@@ -30,7 +30,9 @@
 ;;; Code:
 
 (defconst nicolas4d-org-packages
-  '()
+  '(
+    org
+    )
   "The list of Lisp packages required by the nicolas4d-org layer.
 
 Each entry is either:
@@ -58,5 +60,11 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun nicolas4d-org/post-init-org()
+  (use-package org
+    :config
+    (setq org-file-apps (append '(("\\.png\\'" . "google-chrome-stable %s")) org-file-apps))
+    (setq org-startup-with-inline-images nil)
+    ))
 
 ;;; packages.el ends here
