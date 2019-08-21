@@ -101,11 +101,14 @@ Each entry is either:
   (setq company-minimum-prefix-length 1))
 
 (defun nicolas4d-defaults/post-init-dired()
-  ;; reuse one buffer
-  (put 'dired-find-alternate-file 'disabled nil)
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (setq dired-recursive-deletes 'always)
-  )
+  (use-package dired
+    :config
+    ;; reuse one buffer
+    (put 'dired-find-alternate-file 'disabled nil)
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+
+    (setq dired-recursive-deletes 'always)
+    ))
 
 (defun nicolas4d-defaults/post-init-hungry-delete()
   (global-hungry-delete-mode))
@@ -136,4 +139,5 @@ Each entry is either:
     ;;; for remove warning when emacs statup commented below in .emacs.d/elpa/helm-core.../helm.el
     ;;(defvaralias 'helm-split-window-in-side-p 'helm-split-window-inside-p)
     ))
+
 ;;; packages.el ends here

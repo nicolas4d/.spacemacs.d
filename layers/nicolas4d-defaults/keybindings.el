@@ -16,3 +16,6 @@
 ;;; Rebind 'C-x C-b' for 'buffer-menu'
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
+;;; evil
+;; restore emacs key C-e
+(define-key evil-motion-state-map (kbd "C-e") nil)
