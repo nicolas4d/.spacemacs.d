@@ -333,23 +333,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;;; mail
-
-  ;; send mail
-  (setq smtpmail-smtp-server "smtp.qq.com"
-        smtpmail-smtp-service 25
-        user-full-name "nicolas4d"
-        user-mail-address "nicolas4d@foxmail.com"
-        )
-
-  ;;rmail
-  ;;(setq rmail-remote-password-required t)
-  ;; (setq rmail-remote-password "gaquiacbuqifbgie")
-  ;; (setq rmail-preserve-inbox t)
-  ;; (setq rmail-user-mail-address-regexp "nicolas4d@foxmail.com")
-  ;; (setq rmail-primary-inbox-list '("pops://nicolas4d@qq.com:995"))
-
-  ;;; mail ends here
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
