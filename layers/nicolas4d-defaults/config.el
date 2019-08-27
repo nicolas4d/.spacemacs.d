@@ -25,7 +25,6 @@
 ;; (setq rmail-primary-inbox-list (list "imap://nicolas4d@imap.qq.com")
 ;;       rmail-movemail-variant-in-use 'mailutils
 ;;       rmail-remote-password-required t
-;;       rmail-preserve-inbox t
 ;;       rmail-remote-password "gaquiacbuqifbgie"
 ;;       )
 
@@ -33,7 +32,6 @@
 (setq rmail-remote-password-required t
       rmail-remote-password "gaquiacbuqifbgie"
       rmail-movemail-variant-in-use 'mailutils
-      rmail-preserve-inbox t
       rmail-primary-inbox-list (list "pop://nicolas4d@pop.qq.com")
       ;;rmail-primary-inbox-list '("pop://nicolas4d@qq.com") ;; this line is not working
       )

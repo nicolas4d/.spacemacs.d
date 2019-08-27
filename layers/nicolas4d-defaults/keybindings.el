@@ -19,3 +19,4 @@
 ;;; evil
 ;; restore emacs key C-e
 (define-key evil-motion-state-map (kbd "C-e") nil)
+(define-key evil-motion-state-map (kbd "C-v") nil)
