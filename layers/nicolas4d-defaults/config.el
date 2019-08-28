@@ -34,5 +34,9 @@
       rmail-movemail-variant-in-use 'mailutils
       rmail-primary-inbox-list (list "pop://nicolas4d@pop.qq.com")
       ;;rmail-primary-inbox-list '("pop://nicolas4d@qq.com") ;; this line is not working
+      rmail-summary-line-count-flag nil
       )
+
+;; highlight and activate URLs:
+(add-hook 'rmail-show-message-hook 'goto-address-mode)
   ;;; mail ends here
