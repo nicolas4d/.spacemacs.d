@@ -68,6 +68,7 @@ Each entry is either:
                                 org-file-apps
                                 ))
     ;;(setq org-startup-with-inline-images nil)
+    (setq org-agenda-files '("~/.org"))
     ))
 
 ;;; packages.el ends here
