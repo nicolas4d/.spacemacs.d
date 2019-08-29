@@ -12,7 +12,7 @@
 (setq-default fill-column 75)
 
 ;;;; mail
-;;; send mail
+;;; sending mail
 (setq smtpmail-smtp-server "smtp.qq.com"
       smtpmail-smtp-service 25
       user-full-name "nicolas4d"
@@ -28,16 +28,12 @@
 
 ;; configure pop3
 (setq rmail-remote-password-required t
+      rmail-remote-password (get-email-password-from-authinfo)
       rmail-movemail-variant-in-use 'mailutils
       rmail-primary-inbox-list (list "pop://nicolas4d@pop.qq.com")
       ;;rmail-primary-inbox-list '("pop://nicolas4d@qq.com") ;; this line is not working
       rmail-summary-line-count-flag nil
       )
-
-;; load rmail-remote-password outside
-(when (file-exists-p "~/.elisp.el")
-  (load-file "~/.elisp.el")
-  )
 
 ;; highlight and activate URLs:
 (add-hook 'rmail-show-message-hook 'goto-address-mode)
