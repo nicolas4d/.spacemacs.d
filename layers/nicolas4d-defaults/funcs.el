@@ -1,4 +1,4 @@
-;; rmail
+;;;; rmail
 (defun get-email-password-from-authinfo()
   "get email password from ~/.authinfo."
   (save-excursion
@@ -21,3 +21,5 @@
       ;; kill buffer .authinfo
       (kill-buffer (current-buffer))
       password)))
+
+;;;; rmail ends here

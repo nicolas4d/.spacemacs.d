@@ -9,9 +9,11 @@
 (define-abbrev-table 'global-abbrev-table '(
                                             ("n4d" "nicolas4d")
                                             ))
+
 (setq-default fill-column 75)
 
 ;;;; mail
+
 ;;; sending mail
 (setq smtpmail-smtp-server "smtp.qq.com"
       smtpmail-smtp-service 25
@@ -37,4 +39,5 @@
 
 ;; highlight and activate URLs:
 (add-hook 'rmail-show-message-hook 'goto-address-mode)
+
 ;;;; mail ends here

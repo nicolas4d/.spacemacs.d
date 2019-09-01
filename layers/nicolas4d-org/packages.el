@@ -63,12 +63,14 @@ Each entry is either:
 (defun nicolas4d-org/post-init-org()
   (use-package org
     :config
-    (setq org-file-apps (append '(("\\.jpg\\'" . "google-chrome-stable %s"))
-                                '(("\\.png\\'" . "google-chrome-stable %s"))
-                                org-file-apps
-                                ))
-    ;;(setq org-startup-with-inline-images nil)
-    (setq org-agenda-files '("~/.org"))
-    ))
+    (setq
+     org-file-apps (append '(("\\.jpg\\'" . "google-chrome-stable %s"))
+                           '(("\\.png\\'" . "google-chrome-stable %s"))
+                           org-file-apps
+                           )
+     ;;org-startup-with-inline-images nil
+     org-agenda-files '("~/.org")
+     org-startup-with-latex-preview t
+     )))
 
 ;;; packages.el ends here
