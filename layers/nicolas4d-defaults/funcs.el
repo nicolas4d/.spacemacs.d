@@ -16,7 +16,9 @@
       (backward-word)
       (setq begPoint (point))
       (copy-region-as-kill begPoint endPoint)
-      (setq password (car kill-ring))
+      (setq password (car kill-ring)
+            kill-ring (cdr kill-ring)
+            )
 
       ;; kill buffer .authinfo
       (kill-buffer (current-buffer))
