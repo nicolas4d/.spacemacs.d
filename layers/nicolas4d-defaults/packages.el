@@ -103,10 +103,6 @@ Each entry is either:
 (defun nicolas4d-defaults/post-init-dired()
   (use-package dired
     :config
-    ;; reuse one buffer
-    (put 'dired-find-alternate-file 'disabled nil)
-    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-
     (setq dired-recursive-deletes 'always)
     ))
 
