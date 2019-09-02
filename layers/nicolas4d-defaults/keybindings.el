@@ -17,6 +17,8 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;;; evil
-;; restore emacs key C-e
 (define-key evil-motion-state-map (kbd "C-e") nil)
 (define-key evil-motion-state-map (kbd "C-v") nil)
+(define-key evil-motion-state-map (kbd "C-d") nil)
+(define-key evil-motion-state-map (kbd "C-f") nil)
+;;; evil ends here

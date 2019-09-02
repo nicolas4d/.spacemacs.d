@@ -135,6 +135,7 @@ Each entry is either:
 (defun nicolas4d-defaults/init-helm-ag()
   (use-package helm-ag
     :init
+    (define-key evil-motion-state-map (kbd "SPC f a") 'helm-ag)
 
     ;;; for remove warning when emacs statup commented below in .emacs.d/elpa/helm-core.../helm.el
     ;;(defvaralias 'helm-split-window-in-side-p 'helm-split-window-inside-p)
