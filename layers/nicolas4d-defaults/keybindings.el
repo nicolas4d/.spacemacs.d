@@ -21,4 +21,5 @@
 (define-key evil-motion-state-map (kbd "C-v") nil)
 (define-key evil-motion-state-map (kbd "C-d") nil)
 (define-key evil-motion-state-map (kbd "C-f") nil)
+(define-key evil-motion-state-map (kbd "C-y") nil)
 ;;; evil ends here
