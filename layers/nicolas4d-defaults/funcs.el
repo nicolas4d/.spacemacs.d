@@ -10,6 +10,7 @@
       (beginning-of-buffer)
 
       ;; get password
+      (search-forward-regexp "nicolas4d")
       (search-forward-regexp "password")
       (forward-word)
       (setq endPoint (point))

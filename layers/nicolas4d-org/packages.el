@@ -69,7 +69,7 @@ Each entry is either:
                            org-file-apps
                            )
      ;;org-startup-with-inline-images nil
-     org-agenda-files '("~/.org")
+     org-agenda-files '("~/emacs/.org")
      org-startup-with-latex-preview t
      )))
 

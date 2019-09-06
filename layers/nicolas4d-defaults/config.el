@@ -35,6 +35,7 @@
       rmail-primary-inbox-list (list "pop://nicolas4d@pop.qq.com")
       ;;rmail-primary-inbox-list '("pop://nicolas4d@qq.com") ;; this line is not working
       rmail-summary-line-count-flag nil
+      rmail-file-name "~/emacs/RMAIL"
       )
 
 ;; highlight and activate URLs:
