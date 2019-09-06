@@ -13,7 +13,6 @@
      (global-set-key (kbd "M-SPC") 'set-mark-command)
      ))
 
-;;; Rebind 'C-x C-b' for 'buffer-menu'
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;;; evil

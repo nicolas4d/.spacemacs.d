@@ -98,7 +98,7 @@ Each entry is either:
   )
 
 (defun nicolas4d-defaults/post-init-company()
-  (setq company-minimum-prefix-length 1))
+  )
 
 (defun nicolas4d-defaults/post-init-dired()
   (use-package dired
