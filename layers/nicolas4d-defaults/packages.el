@@ -39,6 +39,7 @@
     web-mode
     yasnippet
     helm-ag
+    cdlatex
     )
   "The list of Lisp packages required by the nicolas4d-defaults layer.
 
@@ -145,4 +146,8 @@ Each entry is either:
     ;;(defvaralias 'helm-split-window-in-side-p 'helm-split-window-inside-p)
     ))
 
+(defun nicolas4d-defaults/init-cdlatex()
+  (use-package cdlatex
+    :init
+    ))
 ;;; packages.el ends here
