@@ -68,9 +68,9 @@ Each entry is either:
                            '(("\\.png\\'" . "google-chrome-stable %s"))
                            org-file-apps
                            )
-     ;;org-startup-with-inline-images nil
+     org-startup-with-inline-images nil
      org-agenda-files '("~/emacs/.org")
-     org-startup-with-latex-preview t
+     ;;org-startup-with-latex-preview t
      )))
 
 ;;; packages.el ends here
