@@ -71,6 +71,11 @@ Each entry is either:
      org-startup-with-inline-images nil
      org-agenda-files '("~/emacs/.org")
      ;;org-startup-with-latex-preview t
-     )))
+     )
+
+     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+     (add-hook 'latex-mode-hook 'turn-on-cdlatex)   ; with Emacs latex mode
+     (add-hook 'org-mode-hook 'turn-on-cdlatex)
+     ))
 
 ;;; packages.el ends here
