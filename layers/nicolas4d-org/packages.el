@@ -69,8 +69,6 @@ Each entry is either:
                            org-file-apps
                            )
      org-agenda-files '("~/emacs/.org")
-     org-startup-with-inline-images t
-     org-startup-with-latex-preview t
      )
 
      (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
