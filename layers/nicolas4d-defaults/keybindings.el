@@ -28,3 +28,5 @@
 (define-key evil-normal-state-map (kbd "C-p") nil)
 (define-key evil-normal-state-map (kbd "C-n") nil)
 ;;; evil ends here
+
+(global-set-key (kbd "M-w") 'copy-region-or-kill-char)
