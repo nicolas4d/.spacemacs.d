@@ -69,6 +69,7 @@ Each entry is either:
                            org-file-apps
                            )
      org-agenda-files '("~/emacs/.org")
+     org-return-follows-link t
      )
 
      (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode

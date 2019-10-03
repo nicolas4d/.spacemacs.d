@@ -26,3 +26,12 @@
       password)))
 
 ;;;; rmail ends here
+
+(defun copy-region-or-kill-char()
+  (if mark-active
+      (kill-ring-save 0 0 t)
+    (kill-backward-chars 1)
+    )
+  )
+
+(global-set-key (kbd "M-w") 'copy-region-or-kill-char)
