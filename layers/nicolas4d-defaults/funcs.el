@@ -28,6 +28,7 @@
 ;;;; rmail ends here
 
 (defun copy-region-or-kill-char()
+  (interactive)
   (if mark-active
       (kill-ring-save 0 0 t)
     (kill-backward-chars 1)
