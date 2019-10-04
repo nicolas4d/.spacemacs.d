@@ -30,17 +30,7 @@
 ;;; Code:
 
 (defconst nicolas4d-defaults-packages
-  '(
-    youdao-dictionary
-    company
-    dired
-    hungry-delete
-    plantuml
-    web-mode
-    yasnippet
-    helm-ag
-    cdlatex
-    )
+  '()
   "The list of Lisp packages required by the nicolas4d-defaults layer.
 
 Each entry is either:
@@ -68,86 +58,4 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun nicolas4d-defaults/init-youdao-dictionary ()
-  (progn
-    (defvar use-package--warning1221
-      (function
-       (lambda
-         (keyword err)
-         (let
-             ((msg
-               (format "%s/%s: %s" 'youdao-dictionary keyword
-                       (error-message-string err))))
-           (display-warning 'use-package msg :error)))))
-    (condition-case err
-        (progn
-          (condition-case err
-              (if
-                  (run-hook-with-args-until-failure 'use-package--youdao-dictionary--pre-init-hook)
-                  (progn
-                    (run-hooks 'use-package--youdao-dictionary--post-init-hook)))
-            ((debug error)
-             (funcall use-package--warning1221 :init err)))
-          (if
-              (not
-               (require 'youdao-dictionary nil t))
-              (display-warning 'use-package
-                               (format "Cannot load %s" 'youdao-dictionary)
-                               :error)))
-      ((debug error)
-       (funcall use-package--warning1221 :catch err))))
-  )
-
-(defun nicolas4d-defaults/post-init-company()
-  )
-
-(defun nicolas4d-defaults/post-init-dired()
-  (use-package dired
-    :config
-    (setq dired-recursive-deletes 'always)
-
-    (put 'dired-find-alternate-file 'disabled nil)
-    ;; 主动加载 Dired Mode
-    ;; (require 'dired)
-    ;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-    ;; 延迟加载
-    (with-eval-after-load 'dired
-      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
-    ))
-
-(defun nicolas4d-defaults/post-init-hungry-delete()
-  (global-hungry-delete-mode))
-
-(defun nicolas4d-defaults/post-init-plantuml()
-  (setq org-plantuml-jar-path
-        (expand-file-name "/home/d/.spacemacs.d/plantuml.jar"))
-  (setq plantuml-jar-path
-        (expand-file-name "/home/d/.spacemacs.d/plantuml.jar")))
-
-(defun nicolas4d-defaults/post-init-web-mode()
-  ;;(add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-  )
-
-(defun nicolas4d-defaults/post-init-yasnippet()
-  (use-package yasnippet
-    :config
-    (define-key yas-minor-mode-map (kbd "TAB") yas-maybe-expand)
-    ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
-    ;;(define-key yas-minor-mode-map (kbd "C-c C-n") #'yas-new-snippet)
-    ;;(define-key yas-minor-mode-map (kbd "C-c C-v") #'yas-visit-snippet-file)
-    ))
-
-(defun nicolas4d-defaults/init-helm-ag()
-  (use-package helm-ag
-    :init
-    (define-key evil-motion-state-map (kbd "SPC f a") 'helm-ag)
-
-    ;;; for remove warning when emacs statup commented below in .emacs.d/elpa/helm-core.../helm.el
-    ;;(defvaralias 'helm-split-window-in-side-p 'helm-split-window-inside-p)
-    ))
-
-(defun nicolas4d-defaults/init-cdlatex()
-  (use-package cdlatex
-    :init
-    ))
 ;;; packages.el ends here

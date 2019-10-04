@@ -69,6 +69,23 @@ values."
                                       epc
                                       groovy-mode
                                       yasnippet-snippets
+                                      youdao-dictionary
+                                      window-numbering
+                                      window-number
+                                      shut-up
+                                      pallet
+                                      package-build
+                                      nodejs-repl
+                                      names
+                                      ledger-mode
+                                      chinese-word-at-point
+                                      cask
+                                      ansi
+                                      nadvice
+                                      web-mode
+                                      yasnippet
+                                      helm-ag
+                                      cdlatex
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -325,6 +342,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; fix why is spacemacs hanging on startup.
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+  (setq elpa-of-cask (concat "~/.emacs.d/.cask/" (number-to-string emacs-major-version) "." (number-to-string emacs-minor-version) "/elpa")
+        package-user-dir elpa-of-cask)
   )
 
 (defun dotspacemacs/user-config ()
@@ -334,6 +354,12 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; load emacs init configurations
+  (load-file "~/.emacs.d/init/better-defaults.el")
+  (load-file "~/.emacs.d/init/funcs.el")
+  (load-file "~/.emacs.d/init/org.el")
+  (load-file "~/.emacs.d/init/keybindings.el")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
